@@ -13,7 +13,7 @@ class SchoolEnum(enum.Enum):
     SEMYEONG = "세명컴퓨터고등학교"
 
 class Luckydraws(Base):
-    __tablename__ = "luckydraws"
+    __tablename__ = "esports_luckydraws"
     __table_args__ = {"mysql_charset": "utf8mb4"}
     
     id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
@@ -22,5 +22,5 @@ class Luckydraws(Base):
     userName = Column(VARCHAR(10), nullable=False)
     isWinner = Column(BOOLEAN, default=False) 
     
-    drawFieldId = Column(BIGINT(unsigned=True), ForeignKey('draw_field.id'), nullable=False)
+    drawFieldId = Column(BIGINT(unsigned=True), ForeignKey('esports_draw_field.id'), nullable=False)
     drawField = relationship("DrawField", back_populates="luckydraws")

@@ -9,7 +9,7 @@ from sqlalchemy.sql import func
 
 
 class DrawField(Base):
-    __tablename__ = "draw_field"
+    __tablename__ = "esports_draw_field"
     __table_args__ = {"mysql_charset": "utf8mb4"}
     
     id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
