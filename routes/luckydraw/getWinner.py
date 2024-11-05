@@ -36,7 +36,7 @@ async def getWinner(api_key: str = Depends(verifyApiKey)):
             "message":"SUCCESS",
             "data": [
                 {
-                    "userSchool": winner.userSchool,
+                    "userSchool": winner.userSchool.value,
                     "userStudentNumber": winner.userStudentNumber,
                     "userName": winner.userName,
                     "drawFieldId": winner.drawFieldId,
