@@ -17,7 +17,7 @@ class Luckydraws(Base):
     __table_args__ = {"mysql_charset": "utf8mb4"}
     
     id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
-    userSchool = Column(Enum(SchoolEnum), nullable=False)
+    userSchool = Column(Enum(SchoolEnum, native_enum=False), nullable=False)
     userStudentNumber = Column(VARCHAR(10), nullable=False)
     userName = Column(VARCHAR(10), nullable=False)
     isWinner = Column(BOOLEAN, default=False) 

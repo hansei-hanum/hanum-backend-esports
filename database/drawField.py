@@ -16,4 +16,4 @@ class DrawField(Base):
     vote = Column(BIGINT(unsigned=True))  
     isActive = Column(BOOLEAN, default=False)
     
-    luckydraws = relationship("Luckydraws", back_populates="drawField", uselist=False)
+    luckydraws = relationship("Luckydraws", back_populates="esports_draw_field", uselist=False)
