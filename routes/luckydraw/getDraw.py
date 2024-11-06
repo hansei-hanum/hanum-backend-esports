@@ -24,6 +24,9 @@ async def getDraw(data: luckydrawRequest):
         if not activeDrawField:
             raise HTTPException(status_code=400, detail="NOT_ACTIVE_YET")
         
+        if len(data.name) > 10 or len(data.studentNumber) > 10:
+            raise HTTPException(status_code=400, detail="DATA_IS_TOO_LONG")
+        
         result = await session.execute(
             select(Luckydraws)
             .where(
