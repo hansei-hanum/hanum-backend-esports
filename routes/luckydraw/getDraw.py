@@ -24,6 +24,18 @@ async def getDraw(data: luckydrawRequest):
         if not activeDrawField:
             raise HTTPException(status_code=400, detail="NOT_ACTIVE_YET")
         
+        result = await session.execute(
+            select(Luckydraws)
+            .where(
+                (Luckydraws.userStudentNumber == data.studentNumber) &
+                (Luckydraws.drawFieldId == activeDrawField.id)
+            )
+        ) 
+        existingUser = result.scalar_one_or_none()
+        
+        if existingUser:
+            raise HTTPException(status_code=400, detail="ALREADY_DRAWED")
+        
         dbValue = Luckydraws(
             userSchool = data.school,
             userStudentNumber = data.studentNumber,
