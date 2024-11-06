@@ -18,7 +18,7 @@ class Luckydraws(Base):
     
     id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
     userSchool = Column(Enum(SchoolEnum, native_enum=False), nullable=False)
-    userStudentNumber = Column(VARCHAR(10), nullable=False)
+    userStudentNumber = Column(VARCHAR(10), nullable=False, unique=True)
     userName = Column(VARCHAR(10), nullable=False)
     isWinner = Column(BOOLEAN, default=False) 
     
