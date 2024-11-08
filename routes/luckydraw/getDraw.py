@@ -13,6 +13,10 @@ class luckydrawRequest(BaseModel):
 
 @router.post("/getDraw")
 async def getDraw(data: luckydrawRequest):
+    
+    if data.school not in ['HANSEI', 'SEMYEONG']:
+        raise HTTPException(status_code=400, detail="WRONG_SCHOOL_NAME")
+    
     async with AsyncSessionLocal() as session: 
         
         result = await session.execute(
