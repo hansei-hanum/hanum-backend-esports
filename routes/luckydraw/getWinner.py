@@ -9,7 +9,7 @@ from depends import verifyApiKey
 router = APIRouter(prefix="/luckydraw")
 
 @router.get("/getWinner")
-async def getWinner(api_key: str = Depends(verifyApiKey)):
+async def getWinner(key: str = Depends(verifyApiKey)):
     async with AsyncSessionLocal() as session:
         
         result = await session.execute(
